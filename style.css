@@ -29,7 +29,7 @@ body {
 	100% { top: -170%; }
 }
 
-.lightsaber { position: relative; }
+.lightsaber { position: relative;}
 
 .lightsaber label {
 	cursor: pointer;
@@ -273,6 +273,7 @@ body {
 .starwars .logo svg {
   width: inherit;
 }
+
 .starwars .titles {
   width: 14.65em;
   margin: 0 0 0 -7.325em;
