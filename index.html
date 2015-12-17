@@ -2,158 +2,44 @@
 <html>
 
 <head>
-	<script src="docs/assets/js/paper.js"></script>
+
 	<title> simplonWars.anim</title>
 	<link rel="icon" href="http://www.iconarchive.com/download/i103536/sensibleworld/starwars/Darth-Vader.ico" />
-	<link type="text/css" rel="stylesheet" href="style.css">
 	<meta charset="utf-8">
+	<link type="text/css" rel="stylesheet" href="style.css">
+
+	<script src="docs/assets/js/codemirror.js"></script>
+	<script src="docs/assets/js/jquery.js"></script>
+	<script src="docs/assets/js/docs.js"></script>
+	<script type="text/javascript" src="docs/assets/js/paper.js"></script>
+	<script type="text/javascript" src="etoile.js"></script>
+	<!--<script type="text/javascript" src="star.js"></script>-->
 
 
 
-	<script>
-		// The amount of circles we want to make:
-		var count = 150;
-
-		// Create a symbol, which we will use to place instances of later:
-		var path = new Path.Circle({
-			center: [0, 0],
-			radius: 10,
-			fillColor: 'white',
-			strokeColor: 'black'
-		});
-
-		var symbol = new Symbol(path);
-
-		// Place the instances of the symbol:
-		for (var i = 0; i < count; i++) {
-			// The center position is a random point in the view:
-			var center = Point.random() * view.size;
-			var placedSymbol = symbol.place(center);
-			placedSymbol.scale(i / count);
-		}
-
-		// The onFrame function is called up to 60 times a second:
-		function onFrame(event) {
-			// Run through the active layer's children list and change
-			// the position of the placed symbols:
-			for (var i = 0; i < count; i++) {
-				var item = project.activeLayer.children[i];
-
-				// Move the item 1/20th of its width to the right. This way
-				// larger circles move faster than smaller circles:
-				item.position.x += item.bounds.width / 20;
-
-				// If the item has left the view on the right, move it back
-				// to the left:
-				if (item.bounds.left > view.size.width) {
-					item.position.x = -item.bounds.width;
-				}
-			}
-		}
-	</script>
-	<script>
-		/*
-		 * Star Wars opening crawl from 1977
-		 *
-		 * I freaking love Star Wars, but could not find
-		 * a web version of the original opening crawl from 1977.
-		 * So I created this one.
-		 *
-		 * I wrote an article where I explain how this works:
-		 * http://timpietrusky.com/star-wars-opening-crawl-from-1977
-		 *
-		 * Watch the Start Wars opening crawl on YouTube.
-		 * http://www.youtube.com/watch?v=7jK-jZo6xjY
-		 *
-		 * Stuff I used:
-		 * - CSS (animation, transform)
-		 * - HTML audio (the opening theme)
-		 * - SVG (the Star Wars logo from wikimedia.org)
-		 *   http://commons.wikimedia.org/wiki/File:Star_Wars_Logo.svg
-		 * - JavaScript (to sync the animation/audio)
-		 *
-		 * Thanks to Craig Buckler for his amazing article
-		 * which helped me to create this remake of the Star Wars opening crawl.
-		 * http://www.sitepoint.com/css3-starwars-scrolling-text/
-		 *
-		 * Sound copyright by The Walt Disney Company.
-		 *
-		 *
-		 * 2013 by Tim Pietrusky
-		 * timpietrusky.com
-		 *
-		 */
-		StarWars = (function() {
-
-			/*
-			 * Constructor
-			 */
-			function StarWars(args) {
-				// Context wrapper
-				this.el = $(args.el);
-
-				// Audio to play the opening crawl
-				this.audio = this.el.find('audio').get(0);
-
-				// Start the animation
-				this.start = this.el.find('.start');
-
-				// The animation wrapper
-				this.animation = this.el.find('.animation');
-
-				// Remove animation and shows the start screen
-				this.reset();
-
-				// Start the animation on click
-				this.start.bind('click', $.proxy(function() {
-					this.start.hide();
-					this.audio.play();
-					this.el.append(this.animation);
-				}, this));
-
-				// Reset the animation and shows the start screen
-				$(this.audio).bind('ended', $.proxy(function() {
-					this.audio.currentTime = 0;
-					this.reset();
-				}, this));
-			}
-
-			/*
-			 * Resets the animation and shows the start screen.
-			 */
-			StarWars.prototype.reset = function() {
-				this.start.show();
-				this.cloned = this.animation.clone(true);
-				this.animation.remove();
-				this.animation = this.cloned;
-			};
-
-			return StarWars;
-		})();
-
-		new StarWars({
-			el: '.starwars'
-		});
-	</script>
 </head>
-
 
 
 
 <body>
 
-
-
+	<!-- La musique de fond-->
 	<audio autoplay>
-	<source src="son/star.mp3" type="audio/mp3" />
+		<source src="son/star.mp3" type="audio/mp3" />
 	</audio>
 
+
+
+	<!-- Le script étoile -->
 	<div class="canvas">
-	<canvas id="canvas-4" style="background: black none repeat scroll 0% 0%; -moz-user-select:none;" width="538" height="198" data-paper-scope="4"></canvas>
+		<canvas id="myCanvas" height="320" style="-webkit-user-select: none; touch-action: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); background: black;" id="canvas-8" width="540" data-paper-scope="8"></canvas>
 	</div>
 
-	<article class="starwars">
 
+
+	<!-- LES DEUX SABRES STARWARS-->
+
+	<article class="starwars">
 
 		<div class="animation">
 
@@ -162,25 +48,26 @@
 				<div class="example-item">
 					<div class="lightsaber">
 						<label for="yoda-example" style="margin-left:-450px; margin-bottom:-300px"></label>
-						<input type="checkbox" id="yoda-example" >
+						<input type="checkbox" id="yoda-example">
 						<div class="switch" style="margin-left: -450px; margin-bottom:-300px"></div>
 						<div class="plasma yoda" style="margin-left: -450px; margin-bottom:-300px"></div>
 
 						<h3></h3>
-</section>
-<section class="the-demo">
-						<div class="example-item">
-							<div class="lightsaber">
-								<label for="windu-example" style="margin-left:450px; margin-bottom:-300px"></label>
-								<input type="checkbox" id="windu-example">
-								<div class="switch" style="margin-left: 450px; margin-bottom:-300px "></div>
-								<div class="plasma windu" style="margin-left:450px; margin-bottom:-300px"></div>
+			</section>
+			<section class="the-demo">
+				<div class="example-item">
+					<div class="lightsaber">
+						<label for="windu-example" style="margin-left:450px; margin-bottom:-300px"></label>
+						<input type="checkbox" id="windu-example">
+						<div class="switch" style="margin-left: 450px; margin-bottom:-300px "></div>
+						<div class="plasma windu" style="margin-left:450px; margin-bottom:-300px"></div>
 
-								<h3></h3>
+						<h3></h3>
+
 			</section>
 
 
-
+			<!-- DEBUT DE L'INTRODUCTION-->
 			<section class="intro">
 				IL n'y a pas longtemps, vraiment pas longtemps
 				<br> dans la galaxie simplonMars, une galaxie très proche....
@@ -208,7 +95,7 @@
 			<section class="logo">
 				<svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="693.615px" height="419.375px" viewBox="0 0 693.615 419.375" enable-background="new 0 0 693.615 419.375" xml:space="preserve">
 					<g id="Layer_2">
-				<g>
+						<g>
 							<path fill="#FFE81F" d="M148.718,221.207l8.67,25.461c4.691,13.768,8.879,24.779,9.425,24.779c0.009,0,0.017-0.004,0.024-0.01
 			c0.6-0.53,17.57-49.811,17.57-49.811h32.89l-39.68,115.619h-22.86c0,0-24.4-70.471-24.3-70.739l-25.47,69.851h-22.63
 			l-39.18-115.15l32.73,0.021c0,0,17.929,50.821,18.168,50.821c0.001,0,0.001-0.001,0.002-0.002l17.89-50.841H148.718 M32.003,213.2
@@ -291,7 +178,7 @@
 			c-0.093,0.069-0.164,0.123-0.223,0.166c-1.865,0.345-8.786,0.345-17.447,0.345h-11.67L534.938,114.067L534.938,114.067z" />
 						</g>
 					</g>
-			</svg>
+				</svg>
 
 			</section>
 			</div>
@@ -300,6 +187,10 @@
 			</div>
 		</div>
 	</article>
+
+	<!-- FIN DE L'INTRODUCTION STARS WARS-->
+
+
 </body>
 
 </html>
