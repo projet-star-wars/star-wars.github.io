@@ -11,9 +11,8 @@
 	<script src="docs/assets/js/codemirror.js"></script>
 	<script src="docs/assets/js/jquery.js"></script>
 	<script src="docs/assets/js/docs.js"></script>
-	<script type="text/javascript" src="docs/assets/js/paper.js"></script>
-	<script type="text/javascript" src="etoile.js"></script>
-	<!--<script type="text/javascript" src="star.js"></script>-->
+
+
 
 
 
@@ -23,6 +22,13 @@
 
 <body>
 
+	<canvas id="monCanvas" width="1500px" height="1000px">
+
+		Texte alternatif pour les navigateurs ne supportant pas Canvas.
+	</canvas>
+
+
+
 	<!-- La musique de fond-->
 	<audio autoplay>
 		<source src="son/star.mp3" type="audio/mp3" />
@@ -31,13 +37,22 @@
 
 
 	<!-- Le script étoile -->
-	<div class="canvas">
-		<canvas id="myCanvas" height="320" style="-webkit-user-select: none; touch-action: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); background: black;" id="canvas-8" width="540" data-paper-scope="8"></canvas>
+<!--	<div class="canvas">
+		<canvas id="myCanvas"   data-paper-scope="8"></canvas>
 	</div>
+-->
+<!-- width="540" height="320" style="-webkit-user-select: none; touch-action: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); background: black;" id="canvas-8"-->
+
+
+
+
+
 
 
 
 	<!-- LES DEUX SABRES STARWARS-->
+
+
 
 	<article class="starwars">
 
@@ -190,6 +205,8 @@
 
 	<!-- FIN DE L'INTRODUCTION STARS WARS-->
 
+<script type="text/javascript" src="paper-core.js"></script>
+<script type="text/javascript" src="stars.js"></script>
 
 </body>
 
