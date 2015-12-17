@@ -22,7 +22,7 @@ window.onload = function() {
   for (var i = 85; i < 105; i++) {
     var star = new Path.Star({
       center: [Math.random() * maxWidth, Math.random() * maxHeight],
-      points: 16,
+      points: 17,
       radius1: 9,
       radius2: 9,
       fillColor: 'white',
