@@ -6,12 +6,25 @@ window.onload = function() {
 
   var maxWidth = document.getElementById("monCanvas").width;
   var maxHeight = document.getElementById("monCanvas").height;
-  for (var i = 0; i < 120; i++) {
+  for (var i = 0; i < 105; i++) {
     var star = new Path.Star({
       center: [Math.random() * maxWidth, Math.random() * maxHeight],
       points: 12,
       radius1: 5,
       radius2: 5,
+      fillColor: 'white',
+      strokeColor: 'black'
+    });
+    star.strokeColor = 'black';
+    stars.push(star);
+  }
+
+  for (var i = 85; i < 105; i++) {
+    var star = new Path.Star({
+      center: [Math.random() * maxWidth, Math.random() * maxHeight],
+      points: 16,
+      radius1: 9,
+      radius2: 9,
       fillColor: 'white',
       strokeColor: 'black'
     });
