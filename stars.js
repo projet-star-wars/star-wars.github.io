@@ -33,16 +33,11 @@ window.onload = function() {
   }
 
 
-
-
-
-
-
   var destination = Point.random() * view.size;
 
   view.onFrame = function(event) {
     for (var i = 0; i < stars.length; i++) {
-      stars[i].translate(Math.random(), 0);
+      stars[i].translate(Math.random()*1.5, 0);
       if (stars[i].position.x > maxWidth){
         stars[i].position.x = -50;
       }
